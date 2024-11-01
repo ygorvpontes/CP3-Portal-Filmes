@@ -1,9 +1,20 @@
-// src/services/api.js
-const API_KEY = 'SUA_API_KEY_AQUI';
+import axios from 'axios';
+
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export const getMovies = async (endpoint) => {
-  const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}&language=pt-BR`);
-  const data = await response.json();
-  return data;
+export const getPopularMovies = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/popular`, {
+      params: {
+        api_key: API_KEY,
+        language: 'pt-BR',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao buscar filmes populares:", error);
+    throw error;
+  }
 };
