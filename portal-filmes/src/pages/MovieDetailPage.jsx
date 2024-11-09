@@ -16,8 +16,15 @@ export default function MovieDetailPage() {
     }, []);
     return (
         <>
-            <h1>{movie.title}</h1>
-            <p>{movie.overview}</p>
+            <div className="movie-details">
+      <h1>{movie.title}</h1>
+      <p>Sinopse: {movie.overview}</p>
+      <p>Avaliação: {movie.vote_average}</p>
+      <p>Data de Lançamento: {movie.release_date}</p>
+      {/* Adicione a lista do elenco se disponível */}
+     </div>
+  
+            
         </>
     )
 }

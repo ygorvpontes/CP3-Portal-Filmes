@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ id, title, poster_path, backdrop_path }) {
+export default function MovieCard({ movie }) {
     return (
-        <div>
-            {/* <h2>{title}</h2> */}
-            <img src={`https://image.tmdb.org/t/p/w154${poster_path}`} />
-            <img src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} />
-            <Link to={`/movies/${id}`}>Saber mais</Link>
+      <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <img src={movie.poster_path} alt={movie.title} className="w-full h-full object-cover" />
+        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-4 text-white">
+          <h3 className="text-lg font-bold">{movie.title}</h3>
+          <p className="text-sm">Avaliação: {movie.vote_average}</p>
         </div>
-    )
-
-}
+      </div>
+    );
+  }
+  
